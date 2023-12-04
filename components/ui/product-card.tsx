@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Expand, ShoppingCart } from "lucide-react";
 
@@ -13,15 +14,24 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+	const router = useRouter();
+
+	const handleClick = () => {
+		router.push(`/producto/${data.id}`);
+	};
+
 	return (
-		<div className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
+		<div
+			onClick={handleClick}
+			className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
+		>
 			{/* Images and Actions */}
-			<div className="aspect-square rounded-xl bg-gray-100 relative">
+			<div className="aspect-square sm:aspect-[3/4] rounded-xl bg-gray-100 relative">
 				<Image
 					src={data?.images?.[0]?.url}
 					alt={data.name}
 					fill
-					className="aspect-square object-contain rounded-md"
+					className="aspect-square sm:aspect-[3/4] object-contain rounded-md"
 				/>
 				<div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
 					<div className="flex gap-x-6 justify-center">
