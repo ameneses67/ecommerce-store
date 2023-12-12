@@ -5,7 +5,7 @@ import { Product } from "@/types";
 
 import useCart from "@/hooks/use-cart";
 
-import IconButton from "@/components/ui/icon-button";
+import { Button } from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 
 interface CartItemProps {
@@ -29,10 +29,14 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
 			</div>
 			<div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
 				<div className="absolute z-10 right-0 top-0">
-					<IconButton
+					<Button
 						onClick={onRemove}
-						icon={<X size={15} />}
-					/>
+						size="icon"
+						variant="outline"
+						className="rounded-full shadow"
+					>
+						<X className="w-4 h-4" />
+					</Button>
 				</div>
 				<div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
 					<div className="flex justify-between">

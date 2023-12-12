@@ -7,7 +7,7 @@ import { Product } from "@/types";
 import useCart from "@/hooks/use-cart";
 
 import Currency from "@/components/ui/currency";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 interface InfoProps {
 	data: Product;
@@ -45,12 +45,9 @@ const Info: React.FC<InfoProps> = ({ data }) => {
 				</div>
 			</div>
 			<div className="mt-10 flex items-center gap-x-3">
-				<Button
-					onClick={onAddToCart}
-					className="flex items-center gap-x-2"
-				>
+				<Button onClick={onAddToCart}>
 					Añadir al carrito
-					<ShoppingCart />
+					<ShoppingCart className="ml-2 h4 w-4" />
 				</Button>
 			</div>
 		</div>

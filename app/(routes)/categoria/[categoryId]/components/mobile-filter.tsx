@@ -6,7 +6,7 @@ import { Dialog } from "@headlessui/react";
 
 import { Color, Size } from "@/types";
 
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import IconButton from "@/components/ui/icon-button";
 
 import Filter from "./filter";
@@ -26,10 +26,10 @@ const MobileFilter: React.FC<MobileFilterProps> = ({ sizes, colors }) => {
 		<>
 			<Button
 				onClick={onOpen}
-				className="flex items-center gap-x-2 lg:hidden"
+				className="lg:hidden"
 			>
 				Filtros
-				<Plus size={20} />
+				<Plus className="ml-2 h-4 w-4" />
 			</Button>
 
 			<Dialog

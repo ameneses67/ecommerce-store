@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 import useCart from "@/hooks/use-cart";
 
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 const NavbarActions = () => {
 	const [isMounted, setIsMounted] = useState(false);
@@ -23,18 +23,12 @@ const NavbarActions = () => {
 	}
 
 	return (
-		<div className="ml-auto flex items-center gap-x-4">
+		<div className="ml-auto mr-6 lg:ml-0 lg:mr-0 flex items-center gap-x-4">
 			<Button
 				onClick={() => router.push("/carrito")}
-				className="flex items-center rounded-full bg-black px-4 py-2"
+				className="rounded-full"
 			>
-				<ShoppingCart
-					size={20}
-					color="white"
-				/>
-				<span className="ml-2 text-sm font-medium text-white">
-					{cart.items.length}
-				</span>
+				<ShoppingCart className="mr-2 h-4 w-4" /> {cart.items.length}
 			</Button>
 		</div>
 	);

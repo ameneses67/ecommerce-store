@@ -7,11 +7,12 @@ import { cn } from "@/lib/utils";
 
 import { Category } from "@/types";
 
-interface MainNavProps {
+export interface MainNavProps {
 	data: Category[];
+	className?: string;
 }
 
-const MainNav: React.FC<MainNavProps> = ({ data }) => {
+const MainNav: React.FC<MainNavProps> = ({ data, className }) => {
 	const pathname = usePathname();
 
 	const routes = data.map((route) => ({
@@ -21,13 +22,15 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
 	}));
 
 	return (
-		<nav className="mx-6 items-center space-x-4 lg:space-x-6">
+		<nav
+			className={cn("mx-6 items-center space-x-6 hidden lg:flex", className)}
+		>
 			{routes.map((route) => (
 				<Link
 					key={route.href}
 					href={route.href}
 					className={cn(
-						"test-sm font-medium transition-colors hover:text-black",
+						"text-2xl lg:text-lg font-medium transition-colors hover:text-black",
 						route.active ? "text-black" : "text-neutral-500"
 					)}
 				>

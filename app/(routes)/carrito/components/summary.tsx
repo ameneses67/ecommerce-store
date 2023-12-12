@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 import useCart from "@/hooks/use-cart";
 
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
-import toast from "react-hot-toast";
 
 const Summary = () => {
 	const searchParams = useSearchParams();
@@ -53,7 +53,7 @@ const Summary = () => {
 			<Button
 				disabled={items.length === 0}
 				onClick={onCheckout}
-				className="w-full mt-6"
+				className="w-full rounded-full mt-6"
 			>
 				Pagar
 			</Button>

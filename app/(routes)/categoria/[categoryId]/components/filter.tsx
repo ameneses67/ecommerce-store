@@ -7,7 +7,7 @@ import { Color, Size } from "@/types";
 
 import { cn } from "@/lib/utils";
 
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 interface FilterProps {
 	valueKey: string;
