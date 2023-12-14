@@ -23,10 +23,10 @@ const NavbarActions = () => {
 	}
 
 	return (
-		<div className="ml-auto mr-6 lg:ml-0 lg:mr-0 flex items-center gap-x-4">
+		<div className="flex items-center gap-x-4">
 			<Button
 				onClick={() => router.push("/carrito")}
-				className="rounded-full"
+				className="rounded-full ml-4 lg:ml-0"
 			>
 				<ShoppingCart className="mr-2 h-4 w-4" /> {cart.items.length}
 			</Button>

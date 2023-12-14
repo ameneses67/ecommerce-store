@@ -4,7 +4,8 @@ import Container from "@/components/ui/container";
 import MainNav from "@/components/main-nav";
 import NavbarActions from "@/components/navbar-actions";
 import getCategories from "@/actions/get-categories";
-import ResponsiveMenu from "./responsive-menu";
+import ResponsiveMenu from "@/components/responsive-menu";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const Navbar = async () => {
 	const categories = await getCategories();
@@ -20,8 +21,11 @@ const Navbar = async () => {
 						<p className="font-bold text-xl">SARIS</p>
 					</Link>
 					<MainNav data={categories} />
-					<NavbarActions />
-					<ResponsiveMenu data={categories} />
+					<div className="flex items-center space-x-6">
+						<NavbarActions />
+						<ModeToggle />
+						<ResponsiveMenu data={categories} />
+					</div>
 				</div>
 			</Container>
 		</div>

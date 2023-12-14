@@ -37,7 +37,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
 	const colors = await getColors();
 
 	return (
-		<div className="bg-white">
+		<div>
 			<Container>
 				<Billboard data={category.billboard} />
 				<div className="px-4 sm:px-6 lg:px-8 pb-24">

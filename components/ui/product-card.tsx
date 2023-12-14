@@ -10,8 +10,16 @@ import { Product } from "@/types";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import useCart from "@/hooks/use-cart";
 
-import IconButton from "@/components/ui/icon-button";
+import { Button } from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface ProductCardProps {
 	data: Product;
@@ -39,51 +47,52 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
 	};
 
 	return (
-		<div
+		<Card
 			onClick={handleClick}
-			className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
+			className="group cursor-pointer"
 		>
-			{/* Images and Actions */}
-			<div className="aspect-square sm:aspect-[3/4] rounded-xl bg-gray-100 relative">
-				<Image
-					src={data?.images?.[0]?.url}
-					alt={data.name}
-					fill
-					className="aspect-square sm:aspect-[3/4] object-contain rounded-md"
-				/>
-				<div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+			<div className="p-4 relative">
+				<AspectRatio
+					ratio={3 / 4}
+					className="bg-muted"
+				>
+					<Image
+						src={data.images[0].url}
+						alt={data.name}
+						fill
+						objectFit="cover"
+						className="rounded-md"
+					/>
+				</AspectRatio>
+				<div className="opacity-0 group-hover:opacity-100 transition absolute inset-x-0 bottom-8">
 					<div className="flex gap-x-6 justify-center">
-						<IconButton
+						<Button
 							onClick={onPreview}
-							icon={
-								<Expand
-									size={20}
-									className="text-gray-600"
-								/>
-							}
-						/>
-						<IconButton
+							variant="outline"
+							size="icon"
+							className="rounded-full"
+						>
+							<Expand className="h-6 w-6" />
+						</Button>
+						<Button
 							onClick={onAddToCart}
-							icon={
-								<ShoppingCart
-									size={20}
-									className="text-gray-600"
-								/>
-							}
-						/>
+							variant="outline"
+							size="icon"
+							className="rounded-full"
+						>
+							<ShoppingCart className="h-6 w-6" />
+						</Button>
 					</div>
 				</div>
 			</div>
-			{/* Description */}
-			<div>
-				<p className="font-semibold text-lg">{data.name}</p>
-				<p className="text-sm text-gray-500">{data.category.name}</p>
-			</div>
-			{/* Price */}
-			<div className="flex items-center justify-between">
+			<CardHeader className="text-lg font-semibold">
+				{data.name}
+				<Badge className="max-w-fit">{data.category.name}</Badge>
+			</CardHeader>
+			<CardContent>
 				<Currency value={data.price} />
-			</div>
-		</div>
+			</CardContent>
+		</Card>
 	);
 };
 export default ProductCard;

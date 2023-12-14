@@ -23,11 +23,11 @@ const CartPage = () => {
 	}
 
 	return (
-		<div className="bg-white">
+		<div>
 			<Container>
 				<div className="px-4 py-16 sm:px-6 lg:px-8">
-					<h1 className="text-3xl font-bold text-black">Carrito de Compras</h1>
-					<div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
+					<h1 className="text-3xl font-bold">Carrito de Compras</h1>
+					<div className="mt-12 lg:grid lg:grid-cols-12 lg:items-stretch gap-x-12">
 						<div className="lg:col-span-7">
 							{cart.items.length === 0 && <NoResults />}
 							<ul>

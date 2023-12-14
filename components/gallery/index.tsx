@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { Tab } from "@headlessui/react";
 
 import { Image as ImageType } from "@/types";
 
-import GalleryTab from "./gallery-tab";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 
 interface GalleryProps {
 	images: ImageType[];
@@ -13,35 +13,43 @@ interface GalleryProps {
 
 const Gallery: React.FC<GalleryProps> = ({ images }) => {
 	return (
-		<Tab.Group
-			as="div"
-			className="flex flex-col-reverse"
+		<Tabs
+			defaultValue={images[0].id}
+			className="flex flex-col gap-4"
 		>
-			<div className="mx-auto mt-6 w-full max-w-2xl lg:max-w-none">
-				<Tab.List className="grid grid-cols-4 gap-6">
-					{images.map((image) => (
-						<GalleryTab
-							key={image.id}
-							image={image}
-						/>
-					))}
-				</Tab.List>
-			</div>
-			<Tab.Panels className="aspect-[3/4] w-full">
+			{images.map((tab) => (
+				<TabsContent
+					key={tab.id}
+					value={tab.id}
+					className="relative aspect-[3/4]"
+				>
+					<Image
+						src={tab.url}
+						alt="Imagen producto"
+						fill
+						objectFit="cover"
+						className="rounded-xl"
+					/>
+				</TabsContent>
+			))}
+			<TabsList className={cn("h-full p-2 max-w-fit space-x-4")}>
 				{images.map((image) => (
-					<Tab.Panel key={image.id}>
-						<div className="aspect-[3/4] relative h-full w-full sm:rounded-lg overflow-hidden">
-							<Image
-								fill
-								src={image.url}
-								alt="Image"
-								className="object-cover object-center"
-							/>
-						</div>
-					</Tab.Panel>
+					<TabsTrigger
+						key={image.id}
+						value={image.id}
+						className="relative aspect-[3/4] w-12 sm:w-24"
+					>
+						<Image
+							src={image.url}
+							alt="Imagen producto"
+							fill
+							objectFit="cover"
+							className="rounded"
+						/>
+					</TabsTrigger>
 				))}
-			</Tab.Panels>
-		</Tab.Group>
+			</TabsList>
+		</Tabs>
 	);
 };
 export default Gallery;
