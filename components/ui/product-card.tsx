@@ -1,9 +1,9 @@
 "use client";
 
+import { MouseEventHandler, useState } from "react";
+import { Expand, ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Expand, ShoppingCart } from "lucide-react";
-import { MouseEventHandler } from "react";
 
 import { Product } from "@/types";
 
@@ -12,12 +12,7 @@ import useCart from "@/hooks/use-cart";
 
 import { Button } from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
@@ -26,8 +21,8 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
-	const router = useRouter();
 	const previewModal = usePreviewModal();
+	const router = useRouter();
 	const cart = useCart();
 
 	const handleClick = () => {

@@ -4,7 +4,7 @@ import usePreviewModal from "@/hooks/use-preview-modal";
 
 import Gallery from "@/components/gallery";
 import Info from "@/components/info";
-import Modal from "@/components/ui/modal";
+import { Modal } from "@/components/modals/modal";
 
 const PreviewModal = () => {
 	const previewModal = usePreviewModal();
